@@ -11,10 +11,10 @@ function App() {
     if (isActive) {
       interval = setInterval(() => {
           setCount((count) => count - 1);
-      }, 1000)
+      }, 1000);
     } else {
       clearInterval(interval);
-    }
+    } 
   }, [isActive])
 
   const handleClick = (e) => {
@@ -27,8 +27,8 @@ function App() {
 
         <label>Time:</label>
         {/* <input onChange={handleChange} name="input"/> */}
-        <button onClick={handleClick}>Count Down</button>   
-
+        <button onClick={handleClick}>Count Down</button>
+        
       <div className="count">
         <h1>{count}</h1>
       </div>
