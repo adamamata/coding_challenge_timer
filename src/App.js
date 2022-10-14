@@ -1,34 +1,33 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 
-  const [count, setCount] = useState(100);
+  const [count, setCount] = useState(10);
+  const [isActive, setIsActive] = useState(false);
 
-  function countDown(){
-    const current = count;
-    for (let i = 0; i < current; i++){
-      setTimeout(() => {
-        setCount(count - 1);
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setCount((count) => count - 1);
       }, 1000)
+    } else {
+      clearInterval(interval);
     }
+  }, [isActive])
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setIsActive(true);
   }
-
-  // const handleChange = (e) => {
-  //   e.preventDefualt();
-  // }
-
-  const handleSubmit = () => {
-    countDown();
-  }
-
 
   return (
     <div className="App">
 
         <label>Time:</label>
         {/* <input onChange={handleChange} name="input"/> */}
-        <button onClick={handleSubmit}>Submit</button>   
+        <button onClick={handleClick}>Count Down</button>   
 
       <div className="count">
         <h1>{count}</h1>
