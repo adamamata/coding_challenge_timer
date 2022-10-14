@@ -10,7 +10,7 @@ function App() {
     let interval = null;
     if (isActive) {
       interval = setInterval(() => {
-        setCount((count) => count - 1);
+          setCount((count) => count - 1);
       }, 1000)
     } else {
       clearInterval(interval);
